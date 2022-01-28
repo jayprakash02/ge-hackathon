@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-wg-m-emwwebbmbu&q+rqvjdp1f02a0)@8uu$mb2%x#99t^z5l5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -126,3 +126,12 @@ STATICFILES_DIRS=[BASE_DIR / "static",]
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import sys 
+import os
+
+BASE_URL = "http://localhost:8000"
+
+DEV_SERVER = len(sys.argv) > 1 and sys.argv[1] == "runserver"
+
+USE_NGROK = os.environ.get("USE_NGROK", "False") == "True" and os.environ.get("RUN_MAIN", None) != "true"

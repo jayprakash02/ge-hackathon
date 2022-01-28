@@ -22,5 +22,3 @@ class User(models.Model):
 
     def get_PublicKey(self):
         return rsa.PublicKey.load_pkcs1_openssl_pem(self.public_key)
-
-
